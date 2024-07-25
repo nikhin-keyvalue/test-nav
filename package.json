@@ -25,10 +25,7 @@
     "prepare": "husky install",
     "prettier": "prettier --write \"src/**/*\""
   },
-  "peerDependencies": {
-    "@AM-i-B-V/jwt-decoder": "^0.1.0",
-    "@AM-i-B-V/ui-kit": "^0.3.3"
-  },
+
   "dependencies": {
 
     "@emotion/cache": "^11.11.0",
