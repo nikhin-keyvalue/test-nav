@@ -1,0 +1,21 @@
+.quill > * {
+    border-color: inherit !important;
+    font: inherit;
+  }
+  .quill > .ql-toolbar {
+    border: none;
+    padding-bottom: 16px;
+  }
+  .quill > .ql-container {
+    font-size: inherit;
+    border-radius: 0 0 10px 10px;
+    background-color: #FFFFFF;
+    height: calc(100% - 42px);
+  }
+  .quill > .ql-container > .ql-editor {
+    border: none
+}
+  .quill > .ql-container > .ql-editor.ql-blank::before{
+    color: #323C49;
+    font-style: normal;
+}

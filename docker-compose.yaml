@@ -1,0 +1,51 @@
+version: '3'
+services:
+  crm-web:
+    build:
+      context: .
+      args:
+        NPM_TOKEN: ${NPM_TOKEN} # NPM_TOKEN is fetched from .env file. Add this NPM_TOKEN also in .env
+    ports:
+      - '3005:3000' # service will be accessible at localhost:3005
+    env_file:
+      - .env # Path to your .env file
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'wget',
+          '--quiet',
+          '--tries=1',
+          '--spider',
+          'http://localhost:3000/health',
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      - 'otel-collector'
+
+  otel-collector:
+    image: otel/opentelemetry-collector:0.67.0
+    restart: always
+    command: [--config=/etc/otel-collector-config.yaml]
+    volumes:
+      - './otel-collector-config.yaml:/etc/otel-collector-config.yaml'
+    ports:
+      - '1888:1888' # pprof extension
+      - '13133:13133' # health_check extension
+      - '4317:4317' # OTLP gRPC receiver
+      - '4318:4318' # OTLP HTTP receiver
+      - '55679:55679' # zpages extension
+    depends_on:
+      - 'jaeger'
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    restart: always
+    ports:
+      - '16686:16686'
+      - '14268'
+      - '14250'

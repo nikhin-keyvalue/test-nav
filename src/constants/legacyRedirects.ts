@@ -1,0 +1,26 @@
+export const legacyRedirects = [
+  '/insight',
+  '/password',
+  '/settings',
+  '/overlays',
+  '/dashboard',
+  '/preferences',
+  '/relationmgmt/mytasks',
+  '/stockmgmt/dealer/list',
+  '/relationmgmt/task/list',
+  '/relationmgmt/group/list',
+  '/relationmgmt/crmcar/list',
+  '/relationmgmt/section/list',
+  '/relationmgmt/relation/list',
+  '/relationmgmt/guarantee/list',
+  '/relationmgmt/guarantee/list',
+  '/relationmgmt/tasktemplate/list',
+  '/relationmgmt/tasktransport/list',
+  '/relationmgmt/tasktemplateset/list',
+  '/relationmgmt/orderlinetemplate/list',
+  '/stockmgmt/usercarstockaccessbound/list',
+  '/articlemanagement/carconfigurationdependentprice/creator',
+  '/articlemanagement/carconfigurationdependentdiscount/creator',
+];
+
+export const webDealerRedirects = ['/stock'];
